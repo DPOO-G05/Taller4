@@ -76,11 +76,11 @@ public class PanelTablero extends JPanel {
     }
 
      
-       public void setDimension(int dimension)
-       {
+    public void setDimension(int dimension)
+    {
     	   this.dimension = dimension;
     	   repaint();
-       }
+    }
 //      
 
 }
