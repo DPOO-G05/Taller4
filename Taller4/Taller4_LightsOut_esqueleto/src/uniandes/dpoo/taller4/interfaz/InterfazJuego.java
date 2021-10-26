@@ -16,12 +16,13 @@ public class InterfazJuego extends JFrame
 	
 	public InterfazJuego()
 	{
-		//Determinar titulo de la ventana
+		//Determinar titulo y tamaño de la ventana
 		this.setTitle("Lights Out");
+		this.setSize( 1000, 700 );
 
 		
 		//Configuración de Ventana
-		this.setResizable(true);
+		this.setResizable(false);
 	
 		//Determinación del Layout
 		this.setLayout(new BorderLayout());
@@ -29,7 +30,8 @@ public class InterfazJuego extends JFrame
 		
 		//Inicialización de Componentes
 		this.configuracion = new PanelConfiguracion();
-		this.tablero = new PanelTablero();
+		this.tablero = new PanelTablero(3);
+		tablero.setDimension(5);
 		this.opciones = new PanelOpciones();
 		this.partida = new PanelPartida();
 	
