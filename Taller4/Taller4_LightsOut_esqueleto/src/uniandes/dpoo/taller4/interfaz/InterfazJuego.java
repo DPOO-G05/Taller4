@@ -52,6 +52,11 @@ public class InterfazJuego extends JFrame
 		
 		
 	}
+	
+	public void jugar(int fila, int columna)
+	{
+		this.coordinador.getTablero().jugar(fila, columna);
+	}
 
 	public PanelConfiguracion getConfiguracion() {
 		return configuracion;

@@ -45,54 +45,34 @@ public class PanelTablero extends JPanel implements MouseListener {
 
         boolean[][] tablero = this.principal.getCoordinador().getTablero().darTablero();   
         
+        Color[] colores = {Color.YELLOW,Color.WHITE, Color.BLACK,Color.LIGHT_GRAY};
+
         for (int i = 0; i < dimension; i++)
         	for (int j  = 0; j < dimension; j++)
         	{
-        		boolean oscuro = tablero[i][j];
         		int xCoor = (i + 1)*(delta) + i*anchoFicha;
         		int yCoor = (j + 1)*delta + j*altoFicha;
-        		g2d.setPaint(new GradientPaint(xCoor,yCoor ,Color.YELLOW,xCoor + anchoFicha,yCoor + altoFicha,Color.WHITE));
+
+        		boolean oscuro = tablero[i][j];
+        		if (oscuro)
+        		{
+        			g2d.setPaint(new GradientPaint(xCoor,yCoor ,colores[0],xCoor + anchoFicha,yCoor + altoFicha,colores[1]));
+        		}
+        		else
+        		{
+        			
+        			g2d.setPaint(new GradientPaint(xCoor,yCoor ,colores[2],xCoor + anchoFicha,yCoor + altoFicha,colores[3]));
+        		}
+
         		g2d.drawRoundRect(xCoor ,yCoor,anchoFicha,altoFicha, 10, 10);
         		g2d.fillRoundRect((i + 1)*(delta) + i*anchoFicha,(j + 1)*delta + j*altoFicha ,anchoFicha,altoFicha, 10, 10);
         	}
-         
-//        // Elementos graficos Java2D
-//        g2d.setColor(Color.RED);
-//        // Linea del borde izquierdo superior del panel (0, 0) al borde derecho inferior del panel (anchoP, altoP)
-//    	g2d.drawLine(0, 0, anchoP, altoP);
-//        g2d.setColor(Color.YELLOW);
-//        // Linea del borde izquierdo inferior del panel (0, altoP) al borde derecho superior del panel (anchoP, 0)
-//    	g2d.drawLine(0, altoP, anchoP, 0);
-//    	
-//    	g2d.setColor(Color.GREEN);
-//    	int centroX = anchoP/2;
-//    	int centroY = altoP/2;
-//    	
-//    	// Circulo grande centrado
-//    	g2d.drawOval(centroX - 160, centroY - 160, 320, 320);
-//
-//    	if ( estadoBoton )
-//    	{
-//    		botonX = centroX - 160;
-//    		botonY = centroY - 80;
-//    		colorBoton = Color.BLUE;    
-//    	}
-//    	else
-//    	{
-//    		botonX = centroX;
-//    		botonY = centroY - 80;    		
-//    		colorBoton = Color.CYAN;
-//    	}
-//    	// Pintar "Boton" a la Izquierda o Derecha del "centro" en Java2D
-//    	g2d.setColor(colorBoton);
-//    	g2d.fillOval(botonX, botonY, 160, 160);
-    }
+   }
 
      
     public void setDimension(int dimension)
     {
     	   this.dimension = dimension;
-    	   //TODO: Lógica para cambiar el backend del tablero al nuevo tamaño e inicializarlo.
     	   repaint();
     }
 
@@ -107,10 +87,10 @@ public class PanelTablero extends JPanel implements MouseListener {
     	int click_y = e.getY();
     	int[] casilla = convertirCoordenadasACasilla(click_x, click_y);
     	//cantidades[casilla[0]][casilla[1]]++;
-    	//principal.jugar(casilla[0], casilla[1]);
+    	principal.jugar(casilla[0], casilla[1]);
     	//this.ultima_fila = casilla[0];
     	//this.ultima_columna = casilla[1];
-    	//repaint();
+    	repaint();
     	System.out.printf("Fila: %d, Columna: %d\n", casilla[0],casilla[1]);
     }
     private int[] convertirCoordenadasACasilla(int x, int y)
@@ -118,8 +98,8 @@ public class PanelTablero extends JPanel implements MouseListener {
     	int ladoTablero = this.dimension;
     	int altoPanelTablero = getHeight();
     	int anchoPanelTablero = getWidth();
-    	int altoCasilla = this.altoFicha;
-    	int anchoCasilla = this.anchoFicha;
+    	int altoCasilla = altoPanelTablero / ladoTablero;
+    	int anchoCasilla = anchoPanelTablero / ladoTablero;
     	int fila = (int) (y / altoCasilla);
     	int columna = (int) (x / anchoCasilla);
     	return new int[] { fila, columna };
