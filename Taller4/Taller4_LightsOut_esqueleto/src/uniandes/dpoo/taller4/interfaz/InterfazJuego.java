@@ -17,7 +17,7 @@ public class InterfazJuego extends JFrame
 	private CoordLightsOut coordinador;
 	
 	private String jugador; 
-	private int puntaje;
+	private int jugadas;
 
 	
 	public InterfazJuego()
@@ -61,6 +61,8 @@ public class InterfazJuego extends JFrame
 	public void jugar(int fila, int columna)
 	{
 		this.coordinador.getTablero().jugar(fila, columna);
+		this.jugadas  = coordinador.getTablero().darJugadas();
+		this.partida.actualizarPuntaje();
 	}
 	
 	public void nuevaPartida()
@@ -89,11 +91,16 @@ public class InterfazJuego extends JFrame
 		coordinador.getTablero().desordenar(numD);
 		
 		tablero.repaint();
+		
+		this.jugadas= coordinador.getTablero().darJugadas();
+		this.partida.actualizarPuntaje();
 	}
 	
 	public void reiniciarPartida()
 	{
 		coordinador.getTablero().reiniciar();
+		this.jugadas = coordinador.getTablero().darJugadas();
+		this.partida.actualizarPuntaje();
 		tablero.repaint();
 	}
 
@@ -104,6 +111,7 @@ public class InterfazJuego extends JFrame
 				, "Nuevo Nombre", JOptionPane.QUESTION_MESSAGE );
 
 		this.jugador = nombre;
+		this.partida.actualizarNombre();
 
 	}
 	
@@ -126,6 +134,14 @@ public class InterfazJuego extends JFrame
 
 	public CoordLightsOut getCoordinador() {
 		return coordinador;
+	}
+
+	public String getJugador() {
+		return jugador;
+	}
+
+	public int getJugadas() {
+		return jugadas;
 	}
 	
 }

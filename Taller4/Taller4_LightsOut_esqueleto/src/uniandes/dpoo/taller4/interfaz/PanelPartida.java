@@ -23,10 +23,10 @@ public class PanelPartida extends JPanel {
 		this.setLayout(layout);
 		//Crear los componentes de contenido
 		JLabel lblJugadas = new JLabel("Jugadas: ");
-		JTextField txtJugadas = new JTextField();
+		this.txtJugadas = new JTextField();
 		txtJugadas.setEditable(false);
 		JLabel lblJugador= new JLabel("Jugador: ");
-		JTextField txtJugador= new JTextField();
+		this.txtJugador= new JTextField();
 		txtJugador.setEditable(false);
 		
 		//Agregar los componentes
@@ -41,5 +41,16 @@ public class PanelPartida extends JPanel {
 		
 	}
 	
+	public void actualizarPuntaje()
+	{
+		String puntaje = String.valueOf(principal.getJugadas());
+		this.txtJugadas.setText(puntaje); 
+	}
+
+	public void actualizarNombre()
+	{
+		String nombre = principal.getJugador();
+		this.txtJugador.setText(nombre);
+	}
 	
 }
