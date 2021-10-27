@@ -39,12 +39,12 @@ public class PanelTablero extends JPanel implements MouseListener {
     	// Dibujar cada una de las fichas
         super.paint( pGrafica );
         int delta = 10;
+        boolean[][] tablero = this.principal.getCoordinador().getTablero().darTablero();   
+        this.dimension = tablero.length; 
         anchoFicha = (getWidth() - dimension * delta)/this.dimension;
         altoFicha = (getHeight()- dimension * delta)/this.dimension;
 
-        boolean[][] tablero = this.principal.getCoordinador().getTablero().darTablero();   
 
-        int dimension = tablero.length;
 
         Color[] colores = {Color.YELLOW,Color.WHITE, Color.BLACK,Color.LIGHT_GRAY};
 
