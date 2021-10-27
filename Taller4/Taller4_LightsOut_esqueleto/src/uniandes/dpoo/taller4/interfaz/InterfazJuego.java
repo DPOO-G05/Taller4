@@ -63,6 +63,25 @@ public class InterfazJuego extends JFrame
 		this.coordinador.getTablero().jugar(fila, columna);
 		this.jugadas  = coordinador.getTablero().darJugadas();
 		this.partida.actualizarPuntaje();
+		boolean termino = coordinador.getTablero().tableroIluminado();
+		
+		if (termino)
+		{
+			int puntaje = coordinador.getTablero().calcularPuntaje();
+			boolean esTop = coordinador.getTop10().esTop10(puntaje);
+			
+			if (esTop)
+			{
+				coordinador.agregarTop10(this.jugador,puntaje);
+			    JOptionPane.showMessageDialog( this, "Felicitaciones! Ha terminado el Juego en el Top 10", "Felicitaciones!", JOptionPane.INFORMATION_MESSAGE);
+			}
+			else
+			{
+			    JOptionPane.showMessageDialog( this, "Felicitaciones! Ha terminado el Juego. Puede iniciar una Nueva Partida", "Felicitaciones!", JOptionPane.INFORMATION_MESSAGE);
+			}
+			
+		}
+
 	}
 	
 	public void nuevaPartida()
@@ -73,7 +92,7 @@ public class InterfazJuego extends JFrame
 
 		if (dificultad.equals(PanelConfiguracion.FACIL))
 		{
-			numD = 3;
+			numD = 1;
 		}
 		else if(dificultad.equals(PanelConfiguracion.MEDIO))
 		{
@@ -94,6 +113,8 @@ public class InterfazJuego extends JFrame
 		
 		this.jugadas= coordinador.getTablero().darJugadas();
 		this.partida.actualizarPuntaje();
+		this.jugador = "AAA";
+		this.partida.actualizarNombre();
 	}
 	
 	public void reiniciarPartida()

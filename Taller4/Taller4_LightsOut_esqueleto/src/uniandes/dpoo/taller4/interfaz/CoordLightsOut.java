@@ -27,6 +27,13 @@ public class CoordLightsOut {
 		
 	}
 
+	
+	public void agregarTop10(String nombre, int puntaje)
+	{
+		this.top10.agregarRegistro(nombre, puntaje);
+	}
+	
+	
 	public Tablero getTablero() {
 		return tablero;
 	}
