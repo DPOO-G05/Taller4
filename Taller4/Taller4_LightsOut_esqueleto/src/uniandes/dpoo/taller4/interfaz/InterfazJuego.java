@@ -85,6 +85,12 @@ public class InterfazJuego extends JFrame
 		
 		tablero.repaint();
 	}
+	
+	public void reiniciarPartida()
+	{
+		coordinador.getTablero().reiniciar();
+		tablero.repaint();
+	}
 
 	public PanelConfiguracion getConfiguracion() {
 		return configuracion;

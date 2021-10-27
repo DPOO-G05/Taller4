@@ -79,7 +79,7 @@ public class PanelOpciones extends JPanel implements ActionListener {
 		}
 		else if(comando.equals(REINICIAR))
 		{
-			//principal.reiniciarPartida();
+			principal.reiniciarPartida();
 		}
 		else if(comando.equals(TOP10))
 		{
