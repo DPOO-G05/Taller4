@@ -16,7 +16,7 @@ public class PanelTablero extends JPanel implements MouseListener {
 	
 	private int dimension;
 	
-	private JFrame principal;
+	private InterfazJuego principal;
 	
 	private final GradientPaint INACTIVO = new GradientPaint(50, 50, Color.BLACK,
             300, 100, Color.LIGHT_GRAY);
@@ -24,7 +24,7 @@ public class PanelTablero extends JPanel implements MouseListener {
             300, 100, Color.WHITE);
 	
 	
-	public PanelTablero(JFrame principal, int dimension)
+	public PanelTablero(InterfazJuego principal, int dimension)
 	{
 		//Asignar principal
 		this.principal = principal;
@@ -32,6 +32,7 @@ public class PanelTablero extends JPanel implements MouseListener {
 		this.addMouseListener(this);
 		this.dimension = dimension;
 	}
+
     public void paint( Graphics pGrafica )
     {
     	Graphics2D g2d = (Graphics2D) pGrafica;
@@ -41,13 +42,16 @@ public class PanelTablero extends JPanel implements MouseListener {
         int delta = 10;
         anchoFicha = (getWidth() - dimension * delta)/this.dimension;
         altoFicha = (getHeight()- dimension * delta)/this.dimension;
-       
+
+        boolean[][] tablero = this.principal.getCoordinador().getTablero().darTablero();   
+        
         for (int i = 0; i < dimension; i++)
         	for (int j  = 0; j < dimension; j++)
         	{
+        		boolean oscuro = tablero[i][j];
         		int xCoor = (i + 1)*(delta) + i*anchoFicha;
         		int yCoor = (j + 1)*delta + j*altoFicha;
-        		g2d.setPaint(new GradientPaint(xCoor,yCoor ,Color.BLACK,xCoor + anchoFicha,yCoor + altoFicha,Color.GRAY));
+        		g2d.setPaint(new GradientPaint(xCoor,yCoor ,Color.YELLOW,xCoor + anchoFicha,yCoor + altoFicha,Color.WHITE));
         		g2d.drawRoundRect(xCoor ,yCoor,anchoFicha,altoFicha, 10, 10);
         		g2d.fillRoundRect((i + 1)*(delta) + i*anchoFicha,(j + 1)*delta + j*altoFicha ,anchoFicha,altoFicha, 10, 10);
         	}
@@ -88,9 +92,14 @@ public class PanelTablero extends JPanel implements MouseListener {
     public void setDimension(int dimension)
     {
     	   this.dimension = dimension;
+    	   //TODO: Lógica para cambiar el backend del tablero al nuevo tamaño e inicializarlo.
     	   repaint();
     }
 
+    public int getDimension()
+    {
+    	return this.dimension;
+    }
     
     public void mousePressed(MouseEvent e)
     {

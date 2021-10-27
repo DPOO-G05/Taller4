@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class PanelOpciones extends JPanel {
 
-	private JFrame principal;
-	public PanelOpciones(JFrame principal)
+	private InterfazJuego principal;
+	public PanelOpciones(InterfazJuego principal)
 	{
 		//Asignar el principal
 		this.principal = principal;

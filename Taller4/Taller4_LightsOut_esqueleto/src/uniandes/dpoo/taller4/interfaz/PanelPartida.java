@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class PanelPartida extends JPanel {
 
-	private JFrame principal;
-	public PanelPartida(JFrame principal)
+	private InterfazJuego principal;
+	public PanelPartida(InterfazJuego principal)
 	{
 		//Asignar el principal
 		this.principal = principal;

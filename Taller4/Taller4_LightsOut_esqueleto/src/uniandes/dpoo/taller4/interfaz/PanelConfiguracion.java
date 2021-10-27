@@ -7,10 +7,10 @@ import java.awt.*;
 public class PanelConfiguracion extends JPanel {
 
 
-	private JFrame principal;
+	private InterfazJuego principal;
 	
 	
-	public PanelConfiguracion(JFrame principal)
+	public PanelConfiguracion(InterfazJuego principal)
 	{
 		//Asignar el principal
 		this.principal = principal;
