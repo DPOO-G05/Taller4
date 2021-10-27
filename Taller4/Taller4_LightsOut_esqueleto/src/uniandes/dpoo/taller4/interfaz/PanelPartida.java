@@ -7,6 +7,12 @@ import java.awt.*;
 public class PanelPartida extends JPanel {
 
 	private InterfazJuego principal;
+	
+	private JTextField txtJugadas;
+	
+	private JTextField txtJugador;
+	
+	
 	public PanelPartida(InterfazJuego principal)
 	{
 		//Asignar el principal
@@ -34,5 +40,6 @@ public class PanelPartida extends JPanel {
 		this.add(txtJugador);
 		
 	}
+	
 	
 }

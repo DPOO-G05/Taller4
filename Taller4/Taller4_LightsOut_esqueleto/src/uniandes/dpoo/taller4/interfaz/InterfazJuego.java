@@ -16,6 +16,10 @@ public class InterfazJuego extends JFrame
 	
 	private CoordLightsOut coordinador;
 	
+	private String jugador; 
+	private int puntaje;
+
+	
 	public InterfazJuego()
 	{
 			//Determinar titulo y tamaño de la ventana
@@ -31,6 +35,7 @@ public class InterfazJuego extends JFrame
 		
 		
 		//Inicialización de Componentes
+		this.jugador = "AAA";
 		this.configuracion = new PanelConfiguracion(this);
 		this.tablero = new PanelTablero(this);
 		tablero.setDimension(5);
@@ -92,6 +97,17 @@ public class InterfazJuego extends JFrame
 		tablero.repaint();
 	}
 
+	
+	public void cambiarJugador()
+	{
+		String nombre = JOptionPane.showInputDialog( this , "Introduzca el nombre del Jugador:"
+				, "Nuevo Nombre", JOptionPane.QUESTION_MESSAGE );
+
+		this.jugador = nombre;
+
+	}
+	
+	
 	public PanelConfiguracion getConfiguracion() {
 		return configuracion;
 	}

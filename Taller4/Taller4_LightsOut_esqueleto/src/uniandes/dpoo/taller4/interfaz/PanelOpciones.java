@@ -87,7 +87,7 @@ public class PanelOpciones extends JPanel implements ActionListener {
 		}
 		else if(comando.equals(JUGADOR))
 		{
-			//principal.cambiarJugador();
+			principal.cambiarJugador();
 		}
 		
 	}
