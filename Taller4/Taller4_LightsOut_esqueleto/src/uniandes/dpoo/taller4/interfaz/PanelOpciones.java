@@ -6,8 +6,14 @@ import java.awt.*;
 
 public class PanelOpciones extends JPanel {
 
-	public PanelOpciones()
+	private JFrame principal;
+	public PanelOpciones(JFrame principal)
 	{
+		//Asignar el principal
+		this.principal = principal;
+
+		this.principal = principal;
+
 		//Configurar Layout
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		
@@ -20,10 +26,19 @@ public class PanelOpciones extends JPanel {
 		JButton btn2 = new JButton("REINICIAR");
 		JButton btn3 = new JButton("TOP-10");
 		JButton btn4 = new JButton("CAMBIAR JUGADOR");
-		contenedor.add(btn1);
-		contenedor.add(btn2);
-		contenedor.add(btn3);
-		contenedor.add(btn4);
+		
+		JButton[] botones = {btn1, btn2, btn3, btn4};
+		//Cambiar el color, letra de los botones y agregarlos
+
+		Font f = new Font("Sans Serif", Font.BOLD,17);
+		Color color = new Color(43,136,224);
+		for(JButton boton: botones)
+		{
+			boton.setFont(f);
+			boton.setBackground(color);
+			boton.setForeground(Color.WHITE);
+			contenedor.add(boton);
+		}
 		
 		//Agregar los componentes:
 		this.add(Box.createGlue());

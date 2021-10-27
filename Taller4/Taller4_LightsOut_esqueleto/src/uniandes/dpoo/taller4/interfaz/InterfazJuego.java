@@ -29,11 +29,11 @@ public class InterfazJuego extends JFrame
 		
 		
 		//Inicialización de Componentes
-		this.configuracion = new PanelConfiguracion();
-		this.tablero = new PanelTablero(3);
+		this.configuracion = new PanelConfiguracion(this);
+		this.tablero = new PanelTablero(this,3);
 		tablero.setDimension(5);
-		this.opciones = new PanelOpciones();
-		this.partida = new PanelPartida();
+		this.opciones = new PanelOpciones(this);
+		this.partida = new PanelPartida(this);
 	
 		
 		//Ordenar el Layout

@@ -6,9 +6,14 @@ import java.awt.*;
 
 public class PanelConfiguracion extends JPanel {
 
+
+	private JFrame principal;
 	
-	public PanelConfiguracion()
+	
+	public PanelConfiguracion(JFrame principal)
 	{
+		//Asignar el principal
+		this.principal = principal;
 		//Determinar el Layout
 		this.setLayout(new FlowLayout());
 		
