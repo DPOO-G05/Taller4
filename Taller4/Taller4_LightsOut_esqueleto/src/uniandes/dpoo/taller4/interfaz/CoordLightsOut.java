@@ -30,6 +30,11 @@ public class CoordLightsOut {
 	public Tablero getTablero() {
 		return tablero;
 	}
+	
+	public void nuevoTablero(int dimension)
+	{
+		this.tablero = new Tablero(dimension);
+	}
 
 	public Top10 getTop10() {
 		return top10;

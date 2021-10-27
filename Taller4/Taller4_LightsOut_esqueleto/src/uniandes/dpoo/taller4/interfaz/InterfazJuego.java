@@ -32,7 +32,7 @@ public class InterfazJuego extends JFrame
 		
 		//Inicialización de Componentes
 		this.configuracion = new PanelConfiguracion(this);
-		this.tablero = new PanelTablero(this,3);
+		this.tablero = new PanelTablero(this);
 		tablero.setDimension(5);
 		this.opciones = new PanelOpciones(this);
 		this.partida = new PanelPartida(this);
@@ -56,6 +56,34 @@ public class InterfazJuego extends JFrame
 	public void jugar(int fila, int columna)
 	{
 		this.coordinador.getTablero().jugar(fila, columna);
+	}
+	
+	public void nuevaPartida()
+	{
+		String dificultad = this.configuracion.getDificultadSelec(); 
+
+		int numD = 0;
+
+		if (dificultad.equals(PanelConfiguracion.FACIL))
+		{
+			numD = 3;
+		}
+		else if(dificultad.equals(PanelConfiguracion.MEDIO))
+		{
+			numD = 5;
+		}
+		else if(dificultad.equals(PanelConfiguracion.DIFICIL))
+		{
+			numD = 7;
+		}
+
+		int tamanio = Character.getNumericValue(configuracion.getTamanioSelec().charAt(0));
+	
+		coordinador.nuevoTablero(tamanio);
+		
+		coordinador.getTablero().desordenar(numD);
+		
+		tablero.repaint();
 	}
 
 	public PanelConfiguracion getConfiguracion() {

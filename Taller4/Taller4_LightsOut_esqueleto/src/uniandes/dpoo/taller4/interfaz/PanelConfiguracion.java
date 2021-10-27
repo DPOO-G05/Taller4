@@ -2,13 +2,23 @@ package uniandes.dpoo.taller4.interfaz;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Enumeration;
 
 
 public class PanelConfiguracion extends JPanel {
 
 
 	private InterfazJuego principal;
+
+	private JComboBox opcionesTamanio;
 	
+	private ButtonGroup dificultades;	 
+	
+	public final static String FACIL = "Fácil";
+	
+	public final static String MEDIO = "Medio";
+	
+	public final static String DIFICIL = "Dificil";
 	
 	public PanelConfiguracion(InterfazJuego principal)
 	{
@@ -31,7 +41,7 @@ public class PanelConfiguracion extends JPanel {
 		
 		String[] opciones =  {"5x5", "4x4", "3x3"};
 
-		JComboBox opcionesTamanio = new JComboBox(opciones);
+		this.opcionesTamanio = new JComboBox(opciones);
 	
 			//Dificultad
 		JLabel lblDificultad = new JLabel("Dificultad");
@@ -40,19 +50,19 @@ public class PanelConfiguracion extends JPanel {
 		lblDificultad.setForeground(Color.white);
 		
 
-		ButtonGroup dificultades = new ButtonGroup();
+		this.dificultades = new ButtonGroup();
 		
-		JRadioButton facil = new JRadioButton("Fácil");
+		JRadioButton facil = new JRadioButton(FACIL);
 		facil.setForeground(Color.white);
 		dificultades.add(facil);
 
 			
-		JRadioButton medio = new JRadioButton("Medio");
+		JRadioButton medio = new JRadioButton(MEDIO);
 		medio.setForeground(Color.white);
 		dificultades.add(medio);
 
 	
-		JRadioButton dificil = new JRadioButton("Dificil");
+		JRadioButton dificil = new JRadioButton(DIFICIL);
 		dificil.setForeground(Color.white);
 		dificultades.add(medio);
 		dificultades.add(dificil);
@@ -69,6 +79,34 @@ public class PanelConfiguracion extends JPanel {
 		this.add(dificil);
 		
 		
+	}
+
+	public JComboBox getOpcionesTamanio() {
+		return opcionesTamanio;
+	}
+
+	
+	public String getTamanioSelec()
+	{
+		return opcionesTamanio.getSelectedItem().toString();
+	}
+	
+	public ButtonGroup getDificultades() {
+		return dificultades;
+	}
+	
+	public String getDificultadSelec()
+	{
+        for (Enumeration<AbstractButton> botones = dificultades.getElements(); botones.hasMoreElements();)
+        {
+            AbstractButton boton = botones.nextElement();
+
+            if (boton.isSelected()) {
+                return boton.getText();
+            }
+        }
+       return null;
+        
 	}
 	
 }

@@ -24,13 +24,12 @@ public class PanelTablero extends JPanel implements MouseListener {
             300, 100, Color.WHITE);
 	
 	
-	public PanelTablero(InterfazJuego principal, int dimension)
+	public PanelTablero(InterfazJuego principal)
 	{
 		//Asignar principal
 		this.principal = principal;
 
 		this.addMouseListener(this);
-		this.dimension = dimension;
 	}
 
     public void paint( Graphics pGrafica )
@@ -44,7 +43,9 @@ public class PanelTablero extends JPanel implements MouseListener {
         altoFicha = (getHeight()- dimension * delta)/this.dimension;
 
         boolean[][] tablero = this.principal.getCoordinador().getTablero().darTablero();   
-        
+
+        int dimension = tablero.length;
+
         Color[] colores = {Color.YELLOW,Color.WHITE, Color.BLACK,Color.LIGHT_GRAY};
 
         for (int i = 0; i < dimension; i++)
