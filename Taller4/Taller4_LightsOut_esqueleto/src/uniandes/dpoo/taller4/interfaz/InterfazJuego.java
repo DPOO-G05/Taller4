@@ -2,6 +2,7 @@ package uniandes.dpoo.taller4.interfaz;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 
 
@@ -133,6 +134,55 @@ public class InterfazJuego extends JFrame
 
 		this.jugador = nombre;
 		this.partida.actualizarNombre();
+
+	}
+	
+
+	public void mostrarTop10()
+	{
+		//Cada elemento retornado viene en el formato
+		// "Nombre;Puntaje"
+		String[] registros = coordinador.mostrarTop10();
+		final DefaultListModel modelo = new DefaultListModel();
+			for (int i = 0; i < 10 ; i++)
+			{
+
+				String posicion = String.valueOf(i + 1);
+				String[] data = registros[i].split(";");
+				String nombre = data[0];
+				String puntaje = data[1];
+				String info = posicion + ".    " + nombre + ": " + puntaje; 
+				modelo.addElement(info);
+		}
+
+		//Creamos la lista	
+		JList lista = new JList(modelo);
+
+		//Creamos el Scroll Pane
+		JScrollPane scroll = new JScrollPane();
+		scroll.setViewportView(lista);
+		//Creación del Cuadro de Dialogo
+		JDialog dialogo = new JDialog();
+		dialogo.setLayout(new BorderLayout());
+		JPanel titulo = new JPanel();
+		titulo.setLayout(new FlowLayout());
+		titulo.setBackground(new Color(43,136,224));
+		JLabel numero = new JLabel("#");
+		JLabel nom = new JLabel("Nombre");
+		Font f = new Font("Sans Serif", Font.BOLD,17);
+		numero.setFont(f);
+		numero.setForeground(Color.WHITE);
+		nom.setFont(f);
+		nom.setForeground(Color.WHITE);
+		titulo.add(numero);
+		titulo.add(nom);
+		titulo.add(new JLabel("Nombre"));
+		dialogo.add(titulo, BorderLayout.NORTH);
+		dialogo.add(scroll, BorderLayout.CENTER);
+		dialogo.setSize(50,200);
+		dialogo.setTitle("Top 10");
+		dialogo.setResizable(false);
+		dialogo.setVisible(true);
 
 	}
 	

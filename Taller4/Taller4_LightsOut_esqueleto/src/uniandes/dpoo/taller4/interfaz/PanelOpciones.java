@@ -83,7 +83,7 @@ public class PanelOpciones extends JPanel implements ActionListener {
 		}
 		else if(comando.equals(TOP10))
 		{
-			//principal.mostrarTop10();
+			principal.mostrarTop10();
 		}
 		else if(comando.equals(JUGADOR))
 		{

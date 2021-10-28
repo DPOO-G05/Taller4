@@ -1,5 +1,7 @@
 package uniandes.dpoo.taller4.interfaz;
 
+import java.util.Collection;
+
 import uniandes.dpoo.taller4.modelo.*;
 
 
@@ -49,6 +51,25 @@ public class CoordLightsOut {
 
 	public InterfazJuego getInterfaz() {
 		return interfaz;
+	}
+	
+	public String[] mostrarTop10()
+	{
+		String informacion = "";
+		
+		Collection<RegistroTop10> registros = this.top10.darRegistros();
+	
+		for (RegistroTop10 registro: registros)
+		{
+			String nombre = registro.darNombre();
+			String puntaje = String.valueOf(registro.darPuntos()); 
+			
+			informacion += nombre + ";" + puntaje + ",";
+		}
+		
+		return informacion.split(",");
+		
+		
 	}
 	
 	
