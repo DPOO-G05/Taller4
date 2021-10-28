@@ -3,6 +3,8 @@ package uniandes.dpoo.taller4.interfaz;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 
@@ -20,13 +22,19 @@ public class InterfazJuego extends JFrame
 	private String jugador; 
 	private int jugadas;
 
-	
 	public InterfazJuego()
 	{
-			//Determinar titulo y tamaño de la ventana
+		//Determinar titulo y tamaño de la ventana
 		this.setTitle("Lights Out");
 		this.setSize( 1000, 700 );
-
+		//Configuracion de Cerrado
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+		@Override
+	    public void windowClosing(WindowEvent e) {
+				terminar();
+			}
+		});	
 		
 		//Configuración de Ventana
 		this.setResizable(false);
@@ -56,7 +64,11 @@ public class InterfazJuego extends JFrame
 		//Hacer Visible
 		this.setVisible(true);
 		
+		//Cargar Top 10
+		this.cargarTop10();
 		
+		//Mostrar Mensaje Bienvenida
+		JOptionPane.showMessageDialog(this, "!Bienvenido! Para iniciar, seleccione un tablero y dificultad y de click en \"Nuevo\"");
 	}
 	
 	public void jugar(int fila, int columna)
@@ -184,6 +196,18 @@ public class InterfazJuego extends JFrame
 		dialogo.setResizable(false);
 		dialogo.setVisible(true);
 
+	}
+	
+	
+	public void terminar() {
+		coordinador.guardarTop10();
+	    this.dispose();
+	    System.exit(0);
+	}
+	
+	public void cargarTop10()
+	{
+		coordinador.cargarTop10();
 	}
 	
 	

@@ -92,7 +92,6 @@ public class PanelTablero extends JPanel implements MouseListener {
     	//this.ultima_fila = casilla[0];
     	//this.ultima_columna = casilla[1];
     	repaint();
-    	System.out.printf("Fila: %d, Columna: %d\n", casilla[0],casilla[1]);
     }
     private int[] convertirCoordenadasACasilla(int x, int y)
     {
