@@ -109,11 +109,11 @@ public class InterfazJuego extends JFrame
 		}
 		else if(dificultad.equals(PanelConfiguracion.MEDIO))
 		{
-			numD = 5;
+			numD = 3;
 		}
 		else if(dificultad.equals(PanelConfiguracion.DIFICIL))
 		{
-			numD = 7;
+			numD = 5;
 		}
 
 		int tamanio = Character.getNumericValue(configuracion.getTamanioSelec().charAt(0));

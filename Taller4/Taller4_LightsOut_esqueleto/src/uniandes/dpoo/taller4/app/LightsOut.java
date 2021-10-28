@@ -6,17 +6,12 @@ import com.formdev.flatlaf.FlatLightLaf;
 public class LightsOut {
 
 	
-	RegistroTop10 registro;
-	Tablero tablero;
-	Top10 top10;
-
-	InterfazJuego interfaz;
+	private InterfazJuego interfaz;
 	
 	
 	
 	public LightsOut()
 	{
-		this.top10 = new Top10();
 		this.interfaz = new InterfazJuego();
 	}
 	
